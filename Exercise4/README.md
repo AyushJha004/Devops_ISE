@@ -177,26 +177,7 @@ Expected: Redis returns `PONG`. MySQL shows `devopsdb`, `information_schema`, `m
 | 9 | Redis DNS resolution | `docker exec flask getent hosts redis` |
 | 10 | Cleanup complete | `docker network ls` |
 
----
-
-## Part 22: Q&A
-
-**Q1. What is the purpose of `--network`?**
-Specifies which Docker network the container connects to, enabling DNS-based service discovery with other containers on the same network.
-
-**Q2. How do containers communicate on the same network?**
-Using container names or IP addresses. Names are preferred — IPs can change when containers are recreated.
-
-**Q3. Bridge vs Host networking?**
-- Bridge: Container gets its own network namespace, isolated and connected via Docker's virtual switch.
-- Host: Container shares the host's network stack directly — no isolation.
-
-**Q4. How do you expose a container port to the host?**
-Use `-p HOST_PORT:CONTAINER_PORT`, e.g. `-p 5001:5001`.
-
----
-
-## Part 25–27: Cleanup
+## Cleanup
 
 ```powershell
 docker stop mysql redis flask
