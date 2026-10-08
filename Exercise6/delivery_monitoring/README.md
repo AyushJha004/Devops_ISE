@@ -65,6 +65,11 @@ The dashboard displays all four delivery metrics with live data:
 
 ![Grafana Delivery Monitoring dashboard](../Screenshot%202026-10-08%20220340.png)
 
+Prometheus target health confirms both the delivery service and Prometheus
+scrape targets are up:
+
+![Prometheus scrape targets healthy](../Screenshot%202026-10-08%20221931.png)
+
 ## Metrics and dashboard
 
 The Python application generates a new sample every second. Prometheus scrapes
