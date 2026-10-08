@@ -1,0 +1,39 @@
+pipeline {
+    agent any
+    stages {
+        stage('Resolve Project Directory') {
+            steps {
+                script {
+                    def projectDir = fileExists('delivery_monitoring/docker-compose.yml')
+                        ? 'delivery_monitoring'
+                        : '.'
+                    if (!fileExists("${projectDir}/docker-compose.yml")) {
+                        error 'Could not find docker-compose.yml in the workspace.'
+                    }
+                    env.PROJECT_DIR = projectDir
+                }
+            }
+        }
+        stage('Validate') {
+            steps {
+                dir(env.PROJECT_DIR) {
+                    sh 'docker compose config --quiet'
+                }
+            }
+        }
+        stage('Build') {
+            steps {
+                dir(env.PROJECT_DIR) {
+                    sh 'docker compose build delivery-metrics'
+                }
+            }
+        }
+        stage('Deploy') {
+            steps {
+                dir(env.PROJECT_DIR) {
+                    sh 'docker compose up --detach'
+                }
+            }
+        }
+    }
+}
