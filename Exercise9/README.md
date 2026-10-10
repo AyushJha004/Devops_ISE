@@ -64,3 +64,7 @@ Pipeline job, and its configuration.
 ### Jenkins Pipeline job configuration
 
 ![Exercise9-Pipeline Jenkins configuration](./Screenshot%202026-10-10%20182110.png)
+
+### Jenkins pipeline build
+
+![Exercise9-Pipeline build 2 console output](./Screenshot%202026-10-10%20185825.png)
